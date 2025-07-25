@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .ejercicio {
     border: 1px solid black; 
     width: 400px; 
@@ -10,4 +14,9 @@ h3 span {
 
 table, th, td {
     border: 1px solid black;
+}
+
+img {
+    width: 300px;
+    height: 200px;
 }

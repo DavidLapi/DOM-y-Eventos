@@ -220,7 +220,7 @@ crearTablaConArrayDeObjetos(arrayObj);
 //Ejercicio 9
 
 const listaEliminacion = document.getElementById("lista-eliminacion");
-const cantidadFrutas = document.getElementById("cantidad-frutas");
+const botonRestablecer = document.getElementById("restablecer");
 
 let frutas = [
     "🍎 Manzana", 
@@ -231,44 +231,91 @@ let frutas = [
     "🍍 Piña"
 ];
 
-function eliminarElementos(array) {
-    if (frutas.length === 0) {
-        listaEliminacion.textContent = "Se acabó la lista";
-    }
-
-    for (element of array) {
-        listaEliminacion.innerHTML += "<li>"+element+"</li>";
-    }
+for (let fruta of frutas) {
+    listaEliminacion.innerHTML += "<li>"+fruta+"</li>";
 }
 
-eliminarElementos(frutas);
-
-
-//Funcion para que escuche el boton
-
-const elementos = listaEliminacion.querySelectorAll('li');
-            
-elementos.forEach(elemento => {
-    // Remover listeners existentes para evitar duplicados
-    elemento.removeEventListener('click', eliminarElemento);
-    // Agregar el event listener
-    elemento.addEventListener('click', eliminarElemento);
+listaEliminacion.addEventListener("click", function(event) {
+    //Verificar si se hizo click en la etiqueta li
+    if (event.target.tagName === "LI") {
+        //Elimina el elemento del DOM
+        event.target.remove();
+    }
 });
 
-
-cantidadFrutas.textContent = "Cantidad de frutas: "+frutas.length;
+botonRestablecer.addEventListener("click", function() {
+    if (!listaEliminacion.querySelector('li')) {
+        for (let fruta of frutas) {
+            listaEliminacion.innerHTML += "<li>"+fruta+"</li>";
+        }
+    }
+});
 
 //Ejercicio 10
 
+const campoTexto = document.getElementById("campo-texto");
+const parrafoTexto = document.getElementById("parrafo-texto");
+
+campoTexto.addEventListener("input", function() {
+    parrafoTexto.textContent = campoTexto.value;
+})
+
 //Ejercicio 11
+
+const botonOcultar = document.getElementById("boton-ocultar");
+const parrafoOcultar = document.getElementById("parrafo-ocultar");
+
+botonOcultar.addEventListener("click", function() {
+    if (parrafoOcultar) {
+        parrafoOcultar.style.display = parrafoOcultar.style.display === "none" ? "block" : "none";
+    }
+});
 
 //Ejercicio 12
 
+const fondoPantalla = document.getElementById("fondo-pantalla");
+
+fondoPantalla.addEventListener("change", function() {
+    const colorSelec = fondoPantalla.value;
+    document.body.style.backgroundColor = colorSelec;
+});
+
 //Ejercicio 13
+
+const botonClicks = document.getElementById("boton-clicks");
+const clicksContados = document.getElementById("clicks-contados");
+let contador = 0;
+
+botonClicks.addEventListener("click", function() { 
+    contador++;
+    clicksContados.textContent = "Número de clicks: "+contador;
+});
 
 //Ejercicio 14
 
+const campoLongitud = document.getElementById("campo-longitud");
+const parrafoLongitud = document.getElementById("parrafo-longitud");
+
+campoLongitud.addEventListener("input", function() {
+    let longitud = campoLongitud.value.length;
+    if (longitud != 0) {
+        parrafoLongitud.textContent = "Longitud del texto: "+longitud;
+    } else {
+        parrafoLongitud.textContent = "";
+    }
+});
+
 //Ejercicio 15
+
+const imagenRaton = document.getElementById("imagen-raton");
+
+imagenRaton.addEventListener("mouseover", function() {
+    imagenRaton.src = "https://www.turismoasturias.es/o/adaptive-media/image/6994017/3/41567a58-ba31-888f-a955-0bbad2d87ca5?t=1717060047191";
+});
+
+imagenRaton.addEventListener("mouseout", function() {
+    imagenRaton.src = "https://masmit.com/75-large_default/filetes-ternera-para-empanar.jpg";
+});
 
 //Ejercicio 16
 

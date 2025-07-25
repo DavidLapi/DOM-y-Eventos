@@ -94,8 +94,8 @@ lista, añádele texto y agrégalo como hijo de la lista.</p>
         elemento de la lista, elimínalo del DOM.</p>
 
     <ul id="lista-eliminacion"></ul>
-    <p id="cantidad-frutas"></p>
-    <button id="restablecer">Restablecer Lista</button>
+
+    <button id="restablecer">Restablecer</button>
 
     <hr>
 
@@ -104,12 +104,18 @@ lista, añádele texto y agrégalo como hijo de la lista.</p>
     <p class="ejercicio">Crea un campo de texto y un párrafo. Cada vez que el usuario presione una
         tecla, actualiza el contenido del párrafo con el texto del input.</p>
 
+    <input type="text" id="campo-texto">
+    <p id="parrafo-texto"></p>
+
     <hr>
 
     <!-- Comienzo ejercicio 11 -->
     <h3>Ejercicio 11: <span>Ocultar y mostrar un párrafo</span></h3>
     <p class="ejercicio">Crea un botón y un párrafo. Al hacer clic en el botón, alterna entre ocultar y
         mostrar el párrafo.</p>
+
+    <button id="boton-ocultar">Ocultar/Mostrar párrafo</button>
+    <p id="parrafo-ocultar">Encontraste un cachopo oculto.</p>
 
     <hr>
 
@@ -118,12 +124,26 @@ lista, añádele texto y agrégalo como hijo de la lista.</p>
     <p class="ejercicio">Crea un menú desplegable con varios colores. Al seleccionar un color,
         cambia el fondo de la página al color seleccionado.</p>
     
+    <label for="fondo-pantalla">Fondo de pantalla: </label>
+    <select id="fondo-pantalla">
+        <option value="" disabled selected>Seleccione un color</option>
+        <option value="black">Negro</option>
+        <option value="yellow">Amarillo</option>
+        <option value="red">Rojo</option>
+        <option value="green">Verde</option>
+        <option value="blue">Azul</option>
+        <option value="white">Blanco </option>
+    </select>
+
     <hr>
 
     <!-- Comienzo ejercicio 13 -->
     <h3>Ejercicio 13: <span>Contar el número de clics en un botón</span></h3>
     <p class="ejercicio">Crea un botón que cuente cuántas veces se ha hecho clic en él y muestre el
         resultado en un párrafo.</p>
+
+    <button id="boton-clicks">Pulse aquí</button>
+    <p id="clicks-contados"></p>
 
     <hr>
 
@@ -132,12 +152,17 @@ lista, añádele texto y agrégalo como hijo de la lista.</p>
     <p class="ejercicio">Crea un input de texto. Muestra en un párrafo la cantidad de caracteres que
         se ingresan en tiempo real.</p>
     
+    <input type="text" id="campo-longitud">
+    <p id="parrafo-longitud"></p>
+
     <hr>
 
     <!-- Comienzo ejercicio 15 -->
     <h3>Ejercicio 15: <span>Cambiar la imagen al pasar el ratón</span></h3>
     <p class="ejercicio">Crea una imagen que cambie cuando el ratón pasa por encima de ella y
         vuelva a la original cuando se retira el ratón.</p>
+
+    <img src="https://masmit.com/75-large_default/filetes-ternera-para-empanar.jpg" alt="Imagen pasable" id="imagen-raton">
 
     <hr>
 
