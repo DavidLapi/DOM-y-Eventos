@@ -319,10 +319,132 @@ imagenRaton.addEventListener("mouseout", function() {
 
 //Ejercicio 16
 
+const campoTarea = document.getElementById("campo-tarea");
+const agregarTarea = document.getElementById("agregar-tarea");
+const listaTareas = document.getElementById("lista-tareas");
+
+//Agregar una tarea nueva al pulsar el boton
+agregarTarea.addEventListener("click", function() {
+    if(campoTarea.value.length == 0) {
+        listaTareas.textContent = "";
+    } else {
+        listaTareas.innerHTML += "<li>"+campoTarea.value+"</li>";
+    }
+});
+
+//Eliminar una tarea con un click
+listaTareas.addEventListener("click", function(event) {
+    //Verificar si se hizo click en la etiqueta li
+    if (event.target.tagName === "LI") {
+        //Elimina el elemento del DOM
+        event.target.remove();
+    }
+});
+
 //Ejercicio 17
+
+const textareaPalabra = document.getElementById("textarea-palabra");
+const contadorPalabra = document.getElementById("contador-palabra");
+
+//Método básico
+textareaPalabra.addEventListener("input", function() {
+    const palabras = this.value.trim().split(/\s+/);
+    const numPalabras = this.value.trim() === '' ? 0 : palabras.length;
+    contadorPalabra.textContent = `Método básico: Palabras: ${numPalabras}`;
+});
+
 
 //Ejercicio 18
 
+const campoAlerta = document.getElementById("campo-alerta");
+const pruebaAlerta = document.getElementById("alerta-prueba");
+
+campoAlerta.addEventListener("keypress", function() {
+    pruebaAlerta.textContent = "Ha escrito: "+campoAlerta.value;
+});
+
+campoAlerta.addEventListener("blur", function() {
+    if(campoAlerta.value.length === 0) {
+        alert("Campo vacío.");
+    } else {
+        alert("Resultado: "+campoAlerta.value);
+    }
+});
+
+campoAlerta.addEventListener("focus", function() {
+    pruebaAlerta.textContent = "Has vuelto al input";
+})
+
 //Ejercicio 19
 
+const listaEstilo = document.querySelectorAll("#lista-estilo li");
+listaEstilo.forEach((item, index) => {
+    
+    //dataset.activado: Guarda el estado del elemento (activado/desactivado)
+    item.dataset.activado === 'true';
+    item.style.cursor = 'pointer';
+
+    if (index < 2) {
+        item.addEventListener('dblclick', () => cambiarEstilo(item));
+    } else {
+        item.addEventListener('dblclick', () => cambiarEstiloConObjeto(item));
+    }
+});
+
+// MÉTODO Más simple - cambiar estilos directamente
+function cambiarEstilo(elemento) {
+    // Si ya está activado, lo desactivamos
+    if (elemento.dataset.activado === 'true') {
+        elemento.style.backgroundColor = '';
+        elemento.style.color = '';
+        elemento.style.fontSize = '';
+        elemento.style.fontWeight = '';
+        elemento.style.padding = '';
+        elemento.dataset.activado = 'false';
+    } else {
+        // Lo activamos con nuevos estilos
+        elemento.style.backgroundColor = 'blue';
+        elemento.style.color = 'white';
+        elemento.style.fontSize = '20px';
+        elemento.style.fontWeight = 'bold';
+        elemento.style.padding = '10px';
+        elemento.dataset.activado = 'true';
+    }
+}
+
+// MÉTODO 2: Usando un objeto con estilos
+const estilosActivado = {
+    backgroundColor: 'red',
+    color: 'white',
+    fontSize: '18px',
+    fontWeight: 'bold',
+    padding: '8px',
+    border: '2px solid darkred',
+    borderRadius: '5px'
+};
+
+function cambiarEstiloConObjeto(elemento) {
+    if (elemento.dataset.activado === 'true') {
+        // Resetear estilos
+        Object.keys(estilosActivado).forEach(propiedad => {
+            elemento.style[propiedad] = '';
+        });
+        elemento.dataset.activado = 'false';
+    } else {
+        // Aplicar estilos
+        Object.assign(elemento.style, estilosActivado);
+        elemento.dataset.activado = 'true';
+    }
+            
+}
+
 //Ejercicio 20
+
+const desplegableDinamico = document.getElementById("desplegable-dinamico");
+const arrayDin = ["Cachopo de cecina", "Cachopo de ternera", "Cachopo de pollo"]; 
+
+desplegableDinamico.innerHTML += "<option value='' disabled selected>Seleccione una opción</option>";
+
+for(elemento of arrayDin) {
+    desplegableDinamico.innerHTML += "<option value='"+elemento+"'>"+elemento+"</option>";
+}
